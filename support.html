@@ -4,71 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flip Streak Support</title>
-<meta name="description" content="Help and contact for Flip Streak, the coin flip streak game for iPhone and iPad.">
+<meta name="description" content="Help and answers for Flip Streak.">
+<meta name="color-scheme" content="dark light">
 <style>
-  :root { color-scheme: dark; }
-  body { margin:0; background:#0A1026; color:#F7F4EA;
-    font:16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-  .wrap { max-width:720px; margin:0 auto; padding:52px 22px 72px; }
-  h1 { font-size:34px; margin:0 0 6px; }
-  h2 { font-size:19px; margin:34px 0 8px; }
-  p, li { color:#C4CBD6; }
-  .date { color:#8F98A8; font-size:14px; margin-bottom:26px; }
-  .big { background:#141E3C; border:1px solid #2C3C6B; border-radius:10px; padding:16px 18px; margin:22px 0; }
-  .big strong { color:#F7F4EA; }
-  a { color:#FFD166; }
-  dt { color:#F7F4EA; font-weight:600; margin-top:18px; }
-  dd { margin:4px 0 0; color:#C4CBD6; }
-  footer { margin-top:48px; padding-top:20px; border-top:1px solid #25335C; color:#8F98A8; font-size:14px; }
+  :root { --bg:#0b1122; --card:#141c33; --line:#26314f; --t:#f5f0e2; --m:#b3bacb; --a:#f2c75c; }
+  @media (prefers-color-scheme: light) { :root { --bg:#fbf5e6; --card:#f3e9d2; --line:#e0d2b0; --t:#2a2112; --m:#5f533c; --a:#855a02; } }
+  body { margin:0; background:var(--bg); color:var(--t); font:17px/1.6 ui-rounded, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width:720px; margin:0 auto; padding:56px 20px 72px; }
+  h1 { font-size:42px; margin:0 0 6px; letter-spacing:-.5px; } h2 { font-size:20px; margin:34px 0 8px; }
+  p, li, dd { color:var(--m); } a { color:var(--a); } li { margin:6px 0; }
+  .tag { color:var(--a); font-size:20px; font-weight:700; margin:0 0 26px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px 18px; margin:20px 0; }
+  .coin { width:96px; height:96px; border-radius:50%; margin-bottom:20px; background:radial-gradient(circle at 34% 28%, #fff0b8, #e2b54a 50%, #8a5a12); box-shadow:0 12px 30px rgba(0,0,0,.35); }
+  .btn { display:inline-block; padding:12px 20px; border-radius:14px; background:linear-gradient(#ffe7a3,#e7b748); color:#3b2706; font-weight:800; text-decoration:none; }
+  dt { font-weight:700; margin-top:18px; } dd { margin:4px 0 0; }
+  footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--line); color:var(--m); font-size:14px; }
 </style>
 </head>
-<body>
-<div class="wrap">
-  <h1>Support</h1>
-  <p class="date">Flip Streak for iPhone and iPad</p>
-
-  <div class="big">
-    <p style="margin:0">Email <a href="mailto:slamville7@gmail.com">slamville7@gmail.com</a>
-    and you will get a reply. Please include your device model and iOS version.</p>
-  </div>
-
-  <h2>How to play</h2>
-  <p>Tap <strong>HEADS</strong> or <strong>TAILS</strong> to call the flip. A correct call adds one to your
-  streak. A wrong call sends the streak back to zero. Your best streak is kept permanently, and
-  milestones arrive at 5, 10, 25, 50 and 100 in a row.</p>
-
-  <h2>Common questions</h2>
-  <dl>
-    <dt>Is the coin actually fair?</dt>
-    <dd>Yes. Every flip is an independent 50/50 draw from the system random number generator.
-    Nothing adjusts the odds based on your streak, and a long run of one side does not make the
-    other side more likely on the next flip.</dd>
-
-    <dt>Why did my streak reset?</dt>
-    <dd>One wrong call ends a streak. That is the whole game. Your best streak is never lost.</dd>
-
-    <dt>How do I turn off sound or vibration?</dt>
-    <dd>Tap the question mark in the top right for How to Play, which has switches for both.
-    The speaker icon in the header also toggles sound directly.</dd>
-
-    <dt>How do I clear my statistics?</dt>
-    <dd>Open the chart icon in the top right and choose Reset statistics. It asks for confirmation,
-    and it cannot be undone.</dd>
-
-    <dt>Will my streak sync to my other devices?</dt>
-    <dd>No. Everything is stored on the device it happened on, which is also why the app needs no
-    account and collects nothing.</dd>
-
-    <dt>I reinstalled and lost my best streak.</dt>
-    <dd>Deleting the app removes its local storage, and there is no server copy to restore from.</dd>
-  </dl>
-
-  <h2>Privacy</h2>
-  <p>Flip Streak collects nothing. See the <a href="privacy.html">privacy policy</a>.</p>
-
-  <footer>
-    <a href="index.html">Flip Streak</a> &middot; <a href="privacy.html">Privacy Policy</a>
-  </footer>
-</div>
-</body>
-</html>
+<body><div class="wrap">
+<h1>Support</h1>
+<p>Flip Streak for iPhone, iPad and Android</p>
+<div class="card">Email <a href="mailto:slamville7@gmail.com">slamville7@gmail.com</a> and you will get a reply. Please include your device model and system version.</div>
+<h2>How to play</h2>
+<p>Tap HEADS or TAILS to call the flip. A right call adds one to your streak; a wrong call sends it back to zero. Your best streak is kept. Milestones celebrate runs of 5, 10, 15 and more.</p>
+<p>The latest version adds <strong>Round of 10</strong> (ten calls and a score), <strong>Decide</strong> (type two options and flip to choose), three <strong>daily challenges</strong> with a daily streak, twelve <strong>coin designs</strong> to unlock, 27 <strong>achievements</strong>, and detailed <strong>statistics</strong>. Settings let you turn off sound or haptics, reduce motion, pick light or dark, and reset your progress.</p>
+<h2>Common questions</h2>
+<dl>
+<dt>Is the coin actually fair?</dt><dd>Yes. Every flip is an independent 50/50 from the system's secure random number generator. Nothing adjusts the odds based on your streak, and a run of one side does not make the other side more likely.</dd>
+<dt>Is there any betting or money involved?</dt><dd>No. There are no wagers, no currency, no prizes and no purchases. Coin designs are collectibles unlocked only by playing.</dd>
+<dt>The coin landed on its edge. Is that a bug?</dt><dd>No. It is rare, it is real coin physics, and it never costs you your streak. Call again.</dd>
+<dt>When do daily challenges reset?</dt><dd>At midnight on your device. Finish at least one challenge each day to keep your daily streak.</dd>
+<dt>How do I start over?</dt><dd>Settings, then Reset all progress. Your sound and appearance settings are kept.</dd>
+<dt>Does it work offline?</dt><dd>Yes, completely. It never connects to the internet.</dd>
+</dl>
+<footer><a href="index.html">Flip Streak</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="support.html">Support</a></footer></div></body></html>
