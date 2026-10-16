@@ -5,97 +5,125 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#0b1122">
 <meta name="color-scheme" content="dark light">
-<meta name="description" content="Call heads or tails and build a streak. Daily challenges, collectible coin designs, stats and a decision maker. A fair coin, free, offline.">
+<meta name="description" content="Flip Streak is a coin trick-shot game. Call the face, then flick the coin with the right angle, power and spin to land it in the cup. 24 hand-made levels, a Daily Shot, Streak Run and coins with different physics.">
 <title>Flip Streak</title>
 <link rel="icon" href="./icon.svg">
-  <script type="module" crossorigin src="./assets/index-5BYhikDl.js"></script>
+  <script type="module" crossorigin src="./assets/index-DIUpKt2h.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/dist-Z0lPoSvM.js">
   <link rel="modulepreload" crossorigin href="./assets/definitions-BdWVgBTV.js">
-  <link rel="stylesheet" crossorigin href="./assets/index-DuLmyl7t.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-Dkk7Gifo.css">
 </head>
 <body>
 <div id="app">
-  <header class="top">
-    <div class="brand" aria-label="Flip Streak"><span class="brand-coin" aria-hidden="true"></span>FLIP <b>STREAK</b></div>
-    <nav class="tools" aria-label="Menu">
-      <button id="open-challenges" class="icon-btn" aria-label="Challenges and achievements">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" class="fill"/></svg>
-        <span id="daily-badge" class="badge" aria-hidden="true">0/3</span>
-      </button>
-      <button id="open-coins" class="icon-btn" aria-label="Coin collection">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="9" cy="8" rx="6" ry="3"/><path d="M3 8v4c0 1.7 2.7 3 6 3s6-1.3 6-3V8"/><ellipse cx="15" cy="15" rx="6" ry="3"/><path d="M9 15v1.5c0 1.7 2.7 3 6 3s6-1.3 6-3V15"/></svg>
-      </button>
-      <button id="open-stats" class="icon-btn" aria-label="Statistics">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V12M12 20V5M19 20v-6"/></svg>
-      </button>
-      <button id="open-settings" class="icon-btn" aria-label="Settings">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8"/></svg>
-      </button>
-    </nav>
-  </header>
 
-  <div class="modes" role="tablist" aria-label="Game mode">
-    <button role="tab" id="mode-streak" data-mode="streak" aria-selected="true">Streak</button>
-    <button role="tab" id="mode-round" data-mode="round" aria-selected="false">Round of 10</button>
-    <button role="tab" id="mode-decide" data-mode="decide" aria-selected="false">Decide</button>
-  </div>
-
-  <section class="board" id="board-streak" aria-label="Streak">
-    <div class="eyebrow">CURRENT STREAK</div>
-    <div id="streak" class="big-num" aria-live="off">0</div>
-    <div class="chips">
-      <span class="chip" id="best-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v3a5 5 0 0 1-10 0V4zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 12v4M8 20h8M10 16h4v4h-4z"/></svg><span id="best-text">BEST 0</span></span>
-      <span class="chip" id="day-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.6 1.4-4 2.4-5.6.6 1.3 1.1 2 1.9 2.3.4-2 .4-4.3.7-6.7z"/></svg><span id="day-text">DAY 0</span></span>
+  <!-- ============ HOME ============ -->
+  <section id="view-home" class="view" aria-label="Home">
+    <header class="top">
+      <div class="brand" aria-label="Flip Streak, coin trick shots"><span class="brand-coin" aria-hidden="true"></span><span>FLIP <b>STREAK</b><small>COIN TRICK SHOTS</small></span></div>
+      <nav class="tools" aria-label="Menu">
+        <button id="open-stats" class="icon-btn" aria-label="Statistics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V12M12 20V5M19 20v-6"/></svg></button>
+        <button id="open-settings" class="icon-btn" aria-label="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8"/></svg></button>
+      </nav>
+    </header>
+    <div class="hero">
+      <canvas id="hero-cv" aria-hidden="true"></canvas>
+      <div class="hero-cap" id="hero-cap" aria-hidden="true"></div>
     </div>
-    <div id="odds" class="odds">&nbsp;</div>
+    <button id="play-next" class="primary big"><span class="pn-top">PLAY</span><span id="play-next-sub" class="pn-sub">1-1 · First Flick</span></button>
+    <div class="cards">
+      <button class="card" id="card-levels"><span class="c-ico c-levels" aria-hidden="true"></span><b>Trick Shots</b><small id="card-levels-sub">0 of 72 stars</small></button>
+      <button class="card" id="card-daily"><span class="c-ico c-daily" aria-hidden="true"></span><b>Daily Shot</b><small id="card-daily-sub">A new shot every day</small></button>
+      <button class="card" id="card-run"><span class="c-ico c-run" aria-hidden="true"></span><b>Streak Run</b><small id="card-run-sub">Best 0</small></button>
+      <button class="card" id="card-coins"><span class="c-ico c-coins" aria-hidden="true"></span><b>Coin Purse</b><small id="card-coins-sub">1 of 12 coins</small></button>
+    </div>
+    <div class="row2">
+      <button class="pill-btn" id="open-ach"><span aria-hidden="true">★</span> Achievements <small id="ach-sub">0/28</small></button>
+      <button class="pill-btn" id="open-decide"><span aria-hidden="true">◐</span> Decide</button>
+    </div>
   </section>
 
-  <section class="board" id="board-round" aria-label="Round of Ten" hidden>
-    <div class="eyebrow">ROUND OF TEN</div>
-    <div class="big-num"><span id="round-score">0</span><small>/10</small></div>
-    <div id="pips" class="pips" aria-hidden="true"></div>
-    <div class="chips"><span class="chip"><span id="round-flip">Flip 1 of 10</span></span><span class="chip"><span id="round-best">BEST 0</span></span></div>
+  <!-- ============ LEVEL SELECT ============ -->
+  <section id="view-levels" class="view" aria-label="Trick Shots" hidden>
+    <header class="top">
+      <button class="icon-btn back" data-back aria-label="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <h1 class="v-title">Trick Shots</h1>
+      <span class="star-total" id="lv-total" aria-label="Stars">★ 0/72</span>
+    </header>
+    <div id="chapters" class="chapters"></div>
   </section>
 
-  <section class="board" id="board-decide" aria-label="Decide" hidden>
-    <div class="eyebrow">LET THE COIN DECIDE</div>
+  <!-- ============ PLAY ============ -->
+  <section id="view-play" class="view play" aria-label="Trick shot" hidden>
+    <header class="top hud">
+      <button class="icon-btn back" data-back aria-label="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="hud-title"><b id="hud-name">First Flick</b><small id="hud-sub">KITCHEN TABLE · 1-1</small></div>
+      <button class="icon-btn coin-btn" id="hud-coin" aria-label="Change coin"><span id="hud-coin-img" class="mini-coin" aria-hidden="true"></span></button>
+    </header>
+    <div class="goals" id="goals" aria-label="Stars for this shot">
+      <span class="goal" id="goal-land"><i aria-hidden="true">★</i>Land it</span>
+      <span class="goal" id="goal-call"><i aria-hidden="true">★</i><span id="goal-call-t">Heads up</span></span>
+      <span class="goal" id="goal-ring"><i aria-hidden="true">★</i>Ring</span>
+      <span class="tries" id="hud-tries"></span>
+    </div>
+    <div class="stage-wrap play-stage">
+      <canvas id="cv" role="img" aria-label="Trick-shot table. Drag back from anywhere to aim, release to flick."></canvas>
+      <div id="readout" class="readout" hidden></div>
+      <div id="tip" class="tip" hidden></div>
+      <div id="hand" class="hand" hidden aria-hidden="true"></div>
+      <div id="result" class="result" hidden role="status" aria-live="polite">
+        <div class="r-stars" id="r-stars" aria-hidden="true"><i>★</i><i>★</i><i>★</i></div>
+        <h2 id="r-title">Called it</h2>
+        <p id="r-line"></p>
+        <div class="r-row">
+          <button id="r-retry" class="ghost">Try again</button>
+          <button id="r-next" class="primary">Next</button>
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="spin" role="group" aria-label="Spin">
+        <button id="spin-minus" class="spin-step" aria-label="Less spin">−</button>
+        <div class="spin-mid">
+          <div class="spin-label"><span>SPIN</span><b id="spin-val">1.00</b><span id="spin-word">forward</span></div>
+          <input id="spin" type="range" min="-2" max="4" step="0.25" value="1" aria-label="Spin, turns per second">
+          <div class="spin-ticks" aria-hidden="true"><span>−2</span><span>0</span><span>2</span><span>4</span></div>
+        </div>
+        <button id="spin-plus" class="spin-step" aria-label="More spin">+</button>
+      </div>
+      <button id="replay-btn" class="ghost small" aria-label="Reset coin">Reset</button>
+    </div>
+  </section>
+
+  <!-- ============ DECIDE (a fair coin for choices) ============ -->
+  <section id="view-decide" class="view" aria-label="Decide" hidden>
+    <header class="top">
+      <button class="icon-btn back" data-back aria-label="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <h1 class="v-title">Decide</h1>
+      <span class="spacer"></span>
+    </header>
+    <p class="sub center">Can't choose? Name both sides and let a fair coin settle it.</p>
     <label class="option"><span class="opt-face heads-ico" aria-hidden="true"></span><span class="sr">Heads means</span><input id="opt-heads" maxlength="28" placeholder="Heads means… (e.g. Pizza)" autocomplete="off" enterkeyhint="next"></label>
     <label class="option"><span class="opt-face tails-ico" aria-hidden="true"></span><span class="sr">Tails means</span><input id="opt-tails" maxlength="28" placeholder="Tails means… (e.g. Tacos)" autocomplete="off" enterkeyhint="done"></label>
-  </section>
-
-  <div class="stage-wrap">
-    <div id="stage" class="stage" role="img" aria-label="The coin"></div>
-    <canvas id="fx" aria-hidden="true"></canvas>
-    <div id="banner" class="banner" hidden></div>
-  </div>
-
-  <p id="status" class="status" role="status" aria-live="polite">Call it. Heads or tails?</p>
-  <div id="history" class="history" aria-label="Recent calls"></div>
-
-  <div class="calls" id="calls">
-    <button id="call-heads" class="call" data-call="heads" aria-label="Call heads"><span class="call-ico heads-ico" aria-hidden="true"></span>HEADS</button>
-    <button id="call-tails" class="call" data-call="tails" aria-label="Call tails"><span class="call-ico tails-ico" aria-hidden="true"></span>TAILS</button>
-  </div>
-  <div class="calls" id="decide-calls" hidden>
+    <div class="stage-wrap">
+      <div id="stage" class="stage" role="img" aria-label="The coin"></div>
+    </div>
+    <p id="decide-status" class="status" role="status" aria-live="polite">Name both sides, then flip.</p>
     <button id="decide-flip" class="call wide">FLIP TO DECIDE</button>
-  </div>
+  </section>
 </div>
 
 <div id="toasts" class="toasts" aria-live="polite"></div>
 
-<dialog id="dlg-challenges" class="sheet" aria-labelledby="ch-title">
-  <div class="sheet-head"><h2 id="ch-title">Challenges</h2><button class="close" aria-label="Close challenges">×</button></div>
-  <div class="daily-hero"><div><div class="eyebrow">DAILY STREAK</div><div class="hero-num" id="ch-days">0</div><small id="ch-days-note"></small></div><div class="resets" id="ch-reset"></div></div>
-  <h3>Today</h3>
-  <ul id="ch-list" class="ch-list"></ul>
-  <h3>Achievements <small id="ach-count"></small></h3>
-  <ul id="ach-list" class="ach-list"></ul>
+<dialog id="dlg-coins" class="sheet" aria-labelledby="coins-title">
+  <div class="sheet-head"><h2 id="coins-title">Coin Purse</h2><button class="close" aria-label="Close coin purse">×</button></div>
+  <p class="sub" id="coins-sub">Each coin flies differently. Pick the right one for the shot.</p>
+  <div id="coin-list" class="coin-list"></div>
 </dialog>
 
-<dialog id="dlg-coins" class="sheet" aria-labelledby="coins-title">
-  <div class="sheet-head"><h2 id="coins-title">Coin Collection</h2><button class="close" aria-label="Close coin collection">×</button></div>
-  <p class="sub" id="coins-sub">Unlock new designs by playing. Tap one to flip with it.</p>
-  <div id="coin-grid" class="coin-grid"></div>
+<dialog id="dlg-ach" class="sheet" aria-labelledby="ach-title">
+  <div class="sheet-head"><h2 id="ach-title">Achievements</h2><button class="close" aria-label="Close achievements">×</button></div>
+  <p class="sub" id="ach-count"></p>
+  <ul id="ach-list" class="ach-list"></ul>
 </dialog>
 
 <dialog id="dlg-stats" class="sheet" aria-labelledby="stats-title">
@@ -113,19 +141,10 @@
     <button role="radio" data-v="system">System</button><button role="radio" data-v="light">Light</button><button role="radio" data-v="dark">Dark</button></div></div>
   <button id="replay-intro" class="row-btn">How to play</button>
   <a class="row-btn" href="./privacy.html">Privacy and support</a>
-  <p class="fine">Every flip is a fair 50/50 from your device's secure random generator. Flip Streak has no ads, purchases, accounts or tracking. Your progress stays on this device.</p>
+  <p class="fine">Flip Streak is a skill game: where the coin lands comes only from your angle, power and spin, simulated with real physics. There is nothing to buy or bet. No ads, accounts or tracking. Your progress stays on this device.</p>
   <button id="reset" class="row-btn danger">Reset all progress</button>
-  <div id="reset-confirm" class="confirm" hidden><p>Erase every streak, stat, achievement and unlocked coin on this device?</p><div class="confirm-row"><button id="reset-no" class="ghost">Keep it</button><button id="reset-yes" class="danger-solid">Erase</button></div></div>
-  <p class="fine center">Flip Streak 1.0.0</p>
-</dialog>
-
-<dialog id="dlg-round" class="card-dlg" aria-labelledby="round-title">
-  <div class="eyebrow">ROUND COMPLETE</div>
-  <h2 id="round-title">7 / 10</h2>
-  <p id="round-line"></p>
-  <div id="round-strip" class="round-strip" aria-hidden="true"></div>
-  <button id="round-again" class="primary">Play another round</button>
-  <button id="round-done" class="ghost">Done</button>
+  <div id="reset-confirm" class="confirm" hidden><p>Erase every star, stat, achievement and unlocked coin on this device?</p><div class="confirm-row"><button id="reset-no" class="ghost">Keep it</button><button id="reset-yes" class="danger-solid">Erase</button></div></div>
+  <p class="fine center" id="version-line">Flip Streak 1.0.0 (4)</p>
 </dialog>
 
 <dialog id="dlg-intro" class="intro" aria-labelledby="intro-title">
